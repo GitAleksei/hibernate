@@ -21,8 +21,8 @@ public class HibernateController {
         return hibernateService.getPersonsByCity(city);
     }
 
-//    @GetMapping("/persons/by-city")
-//    public List<Persons> getPersonsByAgeLessThan(@RequestParam(name = "age") int age) {
-//        return hibernateService.getPersonsByAgeLessThan(age);
-//    }
+    @GetMapping("/persons/by-age")
+    public List<Persons> getPersonsByAgeLessThan(@RequestParam(name = "age") int age) {
+        return hibernateService.getPersonsByAgeLessThan(age);
+    }
 }

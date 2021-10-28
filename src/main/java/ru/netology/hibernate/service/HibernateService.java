@@ -1,5 +1,6 @@
 package ru.netology.hibernate.service;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.netology.hibernate.entity.Persons;
 import ru.netology.hibernate.repository.HibernateRepository;
@@ -18,7 +19,10 @@ public class HibernateService {
         return hibernateRepository.findByCityOfLiving(city);
     }
 
-//    public List<Persons> getPersonsByAgeLessThan(int age) {
-//        return hibernateRepository.findByAgeLessThanOrderByAge(age);
-//    }
+    public List<Persons> getPersonsByAgeLessThan(int age) {
+        return hibernateRepository.findByPrimaryKeyForPersonsAgeLessThan(age, Sort.by(
+                "primaryKeyForPersons.age"));
+    }
+
+
 }

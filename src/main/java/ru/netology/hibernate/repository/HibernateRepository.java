@@ -1,5 +1,6 @@
 package ru.netology.hibernate.repository;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ru.netology.hibernate.entity.Persons;
@@ -12,5 +13,5 @@ public interface HibernateRepository extends CrudRepository<Persons, PrimaryKeyF
 
     List<Persons> findByCityOfLiving(String city);
 
-//    List<Persons> findByAgeLessThanOrderByAge(int age);
+    List<Persons> findByPrimaryKeyForPersonsAgeLessThan(int age, Sort sort);
 }
