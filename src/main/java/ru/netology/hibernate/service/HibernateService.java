@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.netology.hibernate.entity.Persons;
 import ru.netology.hibernate.repository.HibernateRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HibernateService {
@@ -24,5 +26,10 @@ public class HibernateService {
                 "primaryKeyForPersons.age"));
     }
 
-
+    public Persons getPersonsByNameSurname(String name, String surname) {
+        return hibernateRepository
+                .findByPrimaryKeyForPersonsNameAndPrimaryKeyForPersonsSurname(name, surname)
+                .orElseThrow(() ->
+                        new EntityNotFoundException("Entity not found: " + name + " " + surname));
+    }
 }
