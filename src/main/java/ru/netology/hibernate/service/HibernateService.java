@@ -15,6 +15,10 @@ public class HibernateService {
     }
 
     public List<Persons> getPersonsByCity(String city) {
-        return hibernateRepository.getPersonsByCity(city);
+        return hibernateRepository.findByCityOfLiving(city);
     }
+
+//    public List<Persons> getPersonsByAgeLessThan(int age) {
+//        return hibernateRepository.findByAgeLessThanOrderByAge(age);
+//    }
 }

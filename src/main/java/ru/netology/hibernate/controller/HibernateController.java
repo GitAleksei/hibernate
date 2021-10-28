@@ -20,4 +20,9 @@ public class HibernateController {
     public List<Persons> getPersonsByCity(@RequestParam(name = "city") String city) {
         return hibernateService.getPersonsByCity(city);
     }
+
+//    @GetMapping("/persons/by-city")
+//    public List<Persons> getPersonsByAgeLessThan(@RequestParam(name = "age") int age) {
+//        return hibernateService.getPersonsByAgeLessThan(age);
+//    }
 }
