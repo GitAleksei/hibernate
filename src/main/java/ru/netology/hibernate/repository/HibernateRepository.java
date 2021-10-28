@@ -1,6 +1,5 @@
 package ru.netology.hibernate.repository;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -17,8 +16,12 @@ public interface HibernateRepository extends CrudRepository<Persons, PrimaryKeyF
     @Query("select p from Persons p where p.cityOfLiving = :city")
     List<Persons> findByCityOfLiving(@Param("city") String city);
 
-    List<Persons> findByPrimaryKeyForPersonsAgeLessThan(int age, Sort sort);
+    @Query("select p from Persons p where p.primaryKeyForPersons.age < :age " +
+            "order by p.primaryKeyForPersons.age")
+    List<Persons> findByPrimaryKeyForPersonsAgeLessThan(int age);
 
+    @Query("select p from Persons p where p.primaryKeyForPersons.name = :name " +
+            "and p.primaryKeyForPersons.surname = :surname")
     Optional<Persons> findByPrimaryKeyForPersonsNameAndPrimaryKeyForPersonsSurname(
             String name, String surname);
 }
