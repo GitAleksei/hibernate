@@ -22,8 +22,7 @@ public class HibernateService {
     }
 
     public List<Persons> getPersonsByAgeLessThan(int age) {
-        return hibernateRepository.findByPrimaryKeyForPersonsAgeLessThan(age, Sort.by(
-                "primaryKeyForPersons.age"));
+        return hibernateRepository.findByPrimaryKeyForPersonsAgeLessThan(age);
     }
 
     public Persons getPersonsByNameSurname(String name, String surname) {
