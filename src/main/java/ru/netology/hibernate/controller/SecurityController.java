@@ -6,6 +6,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 public class SecurityController {
 
@@ -17,7 +19,7 @@ public class SecurityController {
     }
 
     @GetMapping("/role-write")
-    @Secured("ROLE_WRITE")
+    @RolesAllowed("ROLE_WRITE")
     public String getWrite() {
         return "Hi, " + SecurityContextHolder.getContext().getAuthentication().getName() + " - "
                 + SecurityContextHolder.getContext().getAuthentication().getAuthorities();
